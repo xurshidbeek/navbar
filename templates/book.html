@@ -1,11 +1,10 @@
-
-{% extends 'base.html' %}
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{% extends 'base.html' %}
+{% block title %}Books{% endblock %}
+{% load static %}
     <meta charset="UTF-8">
-    <title>Books</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -17,11 +16,46 @@
             margin-top: 20px;
         }
         .card {
+            margin-bottom: 40px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card-img-top {
+            margin-bottom: 10px; /* Adjust this value for more or less spacing */
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .card-text {
+            color: #777;
             margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
         }
     </style>
 </head>
 <body>
+{% block content %}
     <div class="container">
         <div class="row">
             {% for book in book %}
@@ -35,13 +69,14 @@
                                 Price: ${{ book.price }}<br>
                                 Created on: {{ book.created_d|date:"Y-m-d" }}
                             </p>
-                            <a href="#" class="btn btn-primary">Sotib olish</a>
+                            <a class="btn btn-primary" href="#">Sotib olish</a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
+{% endblock %}
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

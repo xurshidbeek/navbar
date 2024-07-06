@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     #apps
     'navbar',
+    #exporta
+    'import_export',
 ]
 
 MIDDLEWARE = [

@@ -1,12 +1,44 @@
 {% extends 'base.html' %}
-{% load static %}
-
+{% block title %}Assalomu alaykum{% endblock %}
 {% block content %}
-<div class="c">
-    <h4>
- this is home page
- </h4>
-</div>
-
-
+  <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .image-container {
+            position: relative;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div class="image-container">
+            <img src="https://img-cdn.inc.com/image/upload/w_1024,h_576,c_fill/images/panoramic/GettyImages-900301626_437925_t2i3bm.jpg" alt="">
+            <div class="overlay-text">
+                <h1>Assalomu alaykum </h1>
+                <p>Bizning bo'limlar &#x1F609;</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

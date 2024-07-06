@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Authors(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(verbose_name="Ism",max_length=50)
+    last_name = models.CharField(verbose_name="Familya",max_length=50)
     birth_date = models.DateField()
     created_d = models.DateTimeField(auto_now_add=True)
 

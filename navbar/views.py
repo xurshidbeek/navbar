@@ -7,21 +7,19 @@ def home(request):
 
 
 def books(request):
+    if request.method == 'POST':
+        search = request.POST['search']
+        books = Books.objects.filter(tittle__icontains=search)| Books.objects.filter(author__first_name__icontains=search)
+        if books:
+            return render(request, 'book.html', {'book': books, "value": search, "message": "Succesfuly"})
+        else:
+            return render(request, 'book.html', {'message': "NOt found"})
     book = Books.objects.all()
     context = {'book': book}
     return render(request, 'book.html', context=context)
 
 
 def author(request):
-    authors = Authors.objects.all()
-    context = {'author':authors}
+    author = Authors.objects.all()
+    context = {'author':author}
     return render(request, 'author.html', context=context)
-
-def book_list(request):
-    query = request.GET.get('q')
-    if query:
-        books = Books.objects.filter(title__icontains=query)
-    else:
-        books = Books.objects.all()
-    return render(request, 'book.html', {'books': books})
-# Create your views here.
