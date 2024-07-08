@@ -3,13 +3,20 @@ from .models import Books, Authors
 
 
 def home(request):
+    if request.method == 'POST':
+        search = request.POST['search']
+        books = Books.objects.filter(tittle__icontains=search)|Books.objects.filter(author__first_name__icontains=search)
+        if books:
+            return render(request, 'book.html', {'book': books, "value": search, "message": "Succesfuly"})
+        else:
+            return render(request, 'book.html', {'message': "NOt found"})
     return render(request, 'home.html')
 
 
 def books(request):
     if request.method == 'POST':
         search = request.POST['search']
-        books = Books.objects.filter(tittle__icontains=search)| Books.objects.filter(author__first_name__icontains=search)
+        books = Books.objects.filter(tittle__icontains=search)|Books.objects.filter(author__first_name__icontains=search)
         if books:
             return render(request, 'book.html', {'book': books, "value": search, "message": "Succesfuly"})
         else:
