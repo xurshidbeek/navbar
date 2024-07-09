@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<div class="card mb-3" style="max-width: 5400px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ book.image.url }}" class="img-fluid rounded-start" alt="Book Image">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Book: {{ book.tittle }}</h5>
+        <p class="card-text">Description: {{ book.description }}</p>
+        <p class="author"><strong>Author:</strong> {{ book.author.first_name }}</p>
+        <p class="price"><strong>Price:</strong> ${{ book.price }}</p>
+        <p class="date"><strong>Date:</strong> {{ book.created_d }}</p>
+        <button class="btn btn-primary">Card</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

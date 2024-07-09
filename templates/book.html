@@ -63,13 +63,13 @@
                     <div class="card" style="width: 18rem;">
                         <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ book.tittle }}</h5>
+                           <h5 class="card-title">{{ book.tittle }}</h5>
                             <p class="card-text">
                                 Author: {{ book.author.first_name }}<br>
                                 Price: ${{ book.price }}<br>
                                 Created on: {{ book.created_d|date:"Y-m-d" }}
                             </p>
-                            <a class="btn btn-primary" href="#">Sotib olish</a>
+                            <a class="btn btn-primary" href="{% url 'book_detail'  book.id  %}">          Buy        </a>
                         </div>
                     </div>
                 </div>
