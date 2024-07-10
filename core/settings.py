@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     #apps
     'navbar',
+    'users',
     #exporta
     'import_export',
 ]
