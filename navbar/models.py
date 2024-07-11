@@ -18,6 +18,7 @@ class Books(models.Model):
     author = models.ForeignKey(Authors,on_delete=models.CASCADE)
     image = models.ImageField(upload_to="book/")
     price = models.DecimalField(max_digits=5, decimal_places=2)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     count = models.PositiveIntegerField(default=1)
     created_d = models.DateTimeField(auto_now_add=True)
 

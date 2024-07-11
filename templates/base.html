@@ -26,6 +26,21 @@
         .card-img-top {
             margin-bottom: 10px; /* Adjust this value for more or less spacing */
         }
+        .dropdown {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 2px;
+            padding-top: 3px;
+        }
+        .dropdown-menu {
+            background-color: #494848; /* Light gray background */
+        }
+        .dropdown-item:hover {
+            background-color: #abaaaa; /* Darker gray on hover */
+        }
+         .dropdown-item{
+            padding: 15px ;
+         }
     </style>
 </head>
 <body>
@@ -44,12 +59,31 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" method="POST">
-                    {% csrf_token %}
+                {% csrf_token %}
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% if request.user.is_authenticated %}
+                    {{ request.user.username }}
+                {% else %}
+                    Profile
+                {% endif %}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% if request.user.is_authenticated %}
+                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                {% else %}
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                    <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                {% endif %}
+            </div>
+        </div>
     </nav>
+
     <div class="container">
         {% block content %}
         {% endblock %}
