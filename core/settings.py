@@ -8,6 +8,22 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
+
+
+
+
+
+"""""""""""""
+NAME=django_l_4
+USER=postgres
+PASSWORD=2102
+HOST=localhost
+PORT=5432
+
+SECRET_KEY=django-insecure-ryx@y=1591*3#0ust0=j5@3a2_oe%gt93^!2eva=(2q9gfe-=k
+
+"""""""""""""
+
 """
 
 from pathlib import Path
@@ -22,6 +38,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# tepada secret_key
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -44,7 +61,8 @@ INSTALLED_APPS = [
     #apps
     'navbar',
     'users',
-    #exporta
+    'blog',
+    #export
     'import_export',
 ]
 

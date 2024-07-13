@@ -1,52 +1,91 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
 <html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Homepage{% endblock %}</title>
-
-    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <style>
-        body, html {
-            height: 100%;
+        body {
             margin: 0;
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 1s;
         }
 
-        .image-container {
-            position: relative;
+        .container {
             text-align: center;
-            color: white;
         }
 
-        .image-container img {
-            width: 100%;
-            height: auto;
+        .header {
+            margin-bottom: 20px;
         }
 
-        .overlay-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        .overlay-text h1 {
-            font-size: 3em;
-            background-color: rgba(0, 0, 0, 0.5);
+        #clock {
+            font-size: 48px;
             padding: 20px;
+            border: 2px solid #000;
             border-radius: 10px;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .sunrise {
+            background-color: #FFD700; /* Sariq rang */
+        }
+
+        .daytime {
+            background-color: #87CEEB; /* Osmon rang */
+        }
+
+        .sunset {
+            background-color: #FF4500; /* Qizil rang */
+        }
+
+        .night {
+            background-color: #2F4F4F; /* Qorong'u rang */
         }
     </style>
 </head>
 <body>
-    <div class="image-container">
-        <img src="https://img-cdn.inc.com/image/upload/w_1024,h_576,c_fill/images/panoramic/GettyImages-900301626_437925_t2i3bm.jpg" alt="Scenic View">
-        <div class="overlay-text">
-            <h1>Assalomu alaykum</h1>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to Our Bookshop</h1>
+        </div>
+        <div class="clock-container">
+            <div id="clock"></div>
         </div>
     </div>
+    <script>
+        function updateClock() {
+            const clock = document.getElementById('clock');
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            clock.textContent = formattedTime;
+
+            const sunrise = 6; // Quyosh chiqish vaqti
+            const sunset = 18; // Quyosh botish vaqti
+
+            if (hours >= sunrise && hours < 12) {
+                document.body.className = 'sunrise';
+            } else if (hours >= 12 && hours < sunset) {
+                document.body.className = 'daytime';
+            } else if (hours >= sunset && hours < 20) {
+                document.body.className = 'sunset';
+            } else {
+                document.body.className = 'night';
+            }
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Sahifa yuklanganda darhol soatni yangilash
+    </script>
 </body>
 </html>

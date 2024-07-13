@@ -1,5 +1,6 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+
 
 class Authors(models.Model):
     first_name = models.CharField(verbose_name="Ism",max_length=50)
@@ -15,13 +16,12 @@ class Authors(models.Model):
 class Books(models.Model):
     tittle = models.CharField(max_length=200)
     description = models.TextField()
-    author = models.ForeignKey(Authors,on_delete=models.CASCADE)
+    author = models.ForeignKey(Authors, on_delete=models.CASCADE)
+    slug = models.SlugField(unique=True, blank=True,)
     image = models.ImageField(upload_to="book/")
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    slug = models.SlugField(max_length=200, unique=True, blank=True)
     count = models.PositiveIntegerField(default=1)
     created_d = models.DateTimeField(auto_now_add=True)
-
 
     def __str__(self):
         return self.tittle
