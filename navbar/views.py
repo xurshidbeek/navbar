@@ -36,7 +36,7 @@ def author(request):
 
 
 @login_required()
-def book_detail(request, id):
+def book_detail(request, slug):
     if request.method == 'POST':
         search = request.POST['search']
         books = Books.objects.filter(tittle__icontains=search) | Books.objects.filter(
@@ -45,6 +45,6 @@ def book_detail(request, id):
             return render(request, 'book.html', {'book': books, "value": search, "message": "Succesfuly"})
         else:
             return render(request, 'book.html', {'message': "NOt found"})
-    book = Books.objects.get(id=id)
+    book = Books.objects.get(slug=slug)
     return render(request, 'book_detail.html', {'book': book})
 

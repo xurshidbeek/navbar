@@ -51,19 +51,19 @@
     <div class="section">
         <h2>Sotib olingan kitoblar</h2>
         <ul class="book-list">
-            {% for book in purchased_books %}
-                <li>{{ book.title }} by {{ book.author }} - {{ book.price }} so'm</li>
+            {% for book in books %}
+                <li>{{ book.titgitle }} by {{ book.author }} - {{ book.price }} so'm</li>
             {% endfor %}
         </ul>
     </div>
-    <div class="section">
-        <h2>Sotib olmoqchi bo'lgan kitoblar</h2>
-        <ul class="book-list">
-            {% for book in wishlist_books %}
-                <li>{{ book.title }} by {{ book.author }} - {{ book.price }} so'm</li>
-            {% endfor %}
-        </ul>
-    </div>
+<!--    <div class="section">-->
+<!--        <h2>Sotib olmoqchi bo'lgan kitoblar</h2>-->
+<!--        <ul class="book-list">-->
+<!--            {% for book in wishlist_books %}-->
+<!--                <li>{{ book.title }} by {{ book.author }} - {{ book.price }} so'm</li>-->
+<!--            {% endfor %}-->
+<!--        </ul>-->
+<!--    </div>-->
 </div>
 
 </body>

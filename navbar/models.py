@@ -17,7 +17,7 @@ class Books(models.Model):
     tittle = models.CharField(max_length=200)
     description = models.TextField()
     author = models.ForeignKey(Authors, on_delete=models.CASCADE)
-    slug = models.SlugField(unique=True, blank=True,)
+    slug = models.SlugField(null=True)
     image = models.ImageField(upload_to="book/")
     price = models.DecimalField(max_digits=5, decimal_places=2)
     count = models.PositiveIntegerField(default=1)
@@ -28,7 +28,6 @@ class Books(models.Model):
 
 
 class Comments(models.Model):
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     book = models.ManyToManyField(Books)
