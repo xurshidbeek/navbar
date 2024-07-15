@@ -24,6 +24,8 @@ def books(request):
             return render(request, 'book.html', {'book': books, "value": search, "message": "Succesfuly"})
         else:
             return render(request, 'book.html', {'message': "NOt found"})
+
+
     book = Books.objects.all()
     context = {'book': book}
     return render(request, 'book.html', context=context)

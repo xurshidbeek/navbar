@@ -5,9 +5,9 @@ from .views import home, books, author, book_detail
 
 urlpatterns = [
     path('', home, name='home'),
-    path('book/', books, name='book'),
+    path('books/', books, name='books'),
     path('auth/', author, name='author'),
-    path('book/<slug:slug>/', book_detail, name='book_detail'),
+    path('book/<int:slug>/', book_detail, name='book_detail'),
 ]
 
 if settings.DEBUG:

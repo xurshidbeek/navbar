@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from navbar.models import Books
+from .models import UserProfile
+
 
 
 
@@ -45,3 +48,12 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
+
+def akk(request):
+    user_profile = UserProfile.objects.filter(user=request.user)
+    if user_profile:
+        books = Books.objects.all()
+
+        return render(request, 'akk.html', {
+            'purchased_books': books
+        })

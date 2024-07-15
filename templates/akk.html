@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hisob Bo'limi</title>
-    <style>
+{% extends 'base.html' %}
+{% block title %}Books{% endblock %}
+{% load static %}
+<style>
+
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -40,7 +39,6 @@
             padding: 10px 0;
         }
     </style>
-</head>
 <body>
 
 <div class="header">
@@ -65,6 +63,4 @@
 <!--        </ul>-->
 <!--    </div>-->
 </div>
-
-</body>
-</html>
+{% endblock %}

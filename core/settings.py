@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     #apps
     'navbar',
     'users',
-    'blog',
     #export
     'import_export',
 ]
